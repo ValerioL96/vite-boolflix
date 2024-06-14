@@ -1,5 +1,6 @@
 <script>
 import SearchBar from './components/SearchBar.vue';
+import { store } from './store.js';
 
 export default {
  components:{
@@ -8,7 +9,7 @@ export default {
 
   data(){
     return{
-
+      store,
     }
   }
 }
