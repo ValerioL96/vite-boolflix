@@ -10,3 +10,9 @@ Vogliamo dopo la risposta dell’API visualizzare a schermo i seguenti valori pe
 - Lingua
 - Voto
 
+1) creo un collegamento con emit dal bottone search a header;
+
+2) in store mi creo una variante che mi colleghi l'input text all'header;
+
+3) faccio un chiamata get nella componente AppMain in cui avrò la ricerca film;
+
