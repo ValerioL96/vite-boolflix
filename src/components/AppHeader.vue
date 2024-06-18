@@ -1,6 +1,5 @@
 <script>
 import HeaderSearchBar from './HeaderSearchBar.vue';
-import { store } from '../store.js';
 
 export default {
  components:{
@@ -9,16 +8,10 @@ export default {
 
   data(){
     return{
-      store,
+      
     }
   },
 
-  methods:{
-    searchMovies(searchedString){
-      console.log('Clicked');
-      this.store.searchedString;
-    }
-  }
    
 }
 
@@ -26,7 +19,7 @@ export default {
 
 <template>
 
-<HeaderSearchBar @searched="searchMovies" />
+<HeaderSearchBar />
 
 </template>
 
