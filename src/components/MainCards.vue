@@ -6,14 +6,16 @@ import Card from './Card.vue';
 export default {
     
     components: {
-        Card
+        Card,
     },
 
-    
     props: {
-        content: Object,
+        content:{
+            type: Array,
+            required: true,
+        }
     },
-
+    
     data() {
         return {
             store,

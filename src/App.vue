@@ -3,7 +3,9 @@ import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 
 export default {
+  
  components:{
+
   AppHeader,
   AppMain,
  },
@@ -19,8 +21,8 @@ export default {
 
 <template>
 
-<AppHeader />
-<AppMain />
+  <AppHeader />
+  <AppMain />
 
 </template>
 
