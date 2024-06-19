@@ -15,10 +15,27 @@ export default {
   methods: {
         search() {
             if (store.search != '') {
-              store.contents = [];
-              let movies = [];
-              let series = [];
+  
                 axios.get('https://api.themoviedb.org/3/search/movie', {
+                    params: {
+                        api_key: 'fb70970567a3c9007af5c8ada3133a9c',
+                    }
+                })
+                .then(response => {
+                  console.log(response.data.results);
+                  
+                  store.movies = response.data.results;
+                  store.movies.forEach(content => {
+                        try {
+                            content.langImg = require('../../assets/img/flags/' + content.original_language + '.png');
+                        }
+                        catch(err) {
+                            content.langImg = null;
+                        }
+                        content.vote = Math.floor(content.vote_average / 2);
+                    });
+                });
+                axios.get('https://api.themoviedb.org/3/search/tv', {
                     params: {
                         api_key: 'fb70970567a3c9007af5c8ada3133a9c',
                         query: store.search,
@@ -26,30 +43,21 @@ export default {
                     }
                 })
                 .then(response => {
-                  console.log(response.data.results);
-                  movies = response.data.results;
-                    axios.get('https://api.themoviedb.org/3/search/tv', {
-                        params: {
-                            api_key: 'fb70970567a3c9007af5c8ada3133a9c',
-                            query: store.search,
-                            language: 'it-IT'
+                    store.series = response.data.results;
+                    store.series.forEach(content => {
+                        try {
+                            content.langImg = require('../../assets/img/flags/' + content.original_language + '.png');
                         }
-                    })
-                    .then(response => {
-                        series = response.data.results;
-                        store.contents = movies.concat(series);
-                        store.contents.forEach(content => {
-                            try {
-                                content.langImg = require('../../assets/img/flags/' + content.original_language + '.png');
-                            }
-                            catch(err) {
-                                content.langImg = null;
-                            }
-                        });
+                        catch(err) {
+                            content.langImg = null;
+                        }
+                        content.vote = Math.floor(content.vote_average / 2);
                     });
                 });
             } else {
-                store.contents = [];
+                store.movies = [];
+                store.series = [];
+
             }
         }
     }

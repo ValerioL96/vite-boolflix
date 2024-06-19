@@ -1,11 +1,13 @@
 <script>
-import MainCards from './MainCards.vue'
+import Movies from './Movies.vue';
+import Series from './Series.vue';
 
 
 export default {
 
   components: {
-      MainCards,
+    Movies,
+    Series,
   },
   props: {
         content:{
@@ -24,7 +26,10 @@ export default {
 
 <template>
   <main>
-      <MainCards />
+
+    <Movies />
+    <Series />
+    
   </main>
 </template>
 
